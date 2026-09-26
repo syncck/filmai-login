@@ -1,0 +1,24 @@
+# Sensitive credentials & environment files
+.filmai_credentials
+*.credentials
+.env
+
+# Session cookies and tokens
+filmai_cookies.txt
+*.cookies
+
+# Execution logs
+*.log
+filmai_login.log
+
+# Debug HTML dumps
+*.html
+login_page.html
+login_response.html
+final_page.html
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
