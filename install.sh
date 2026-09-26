@@ -38,7 +38,13 @@ if ! command -v docker >/dev/null 2>&1; then
     echo "Docker not detected. Install via: curl -fsSL https://get.docker.com | sudo sh" >&2
 fi
 
-SCRIPT_SOURCE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_SOURCE_DIR=""
+if [ -n "${BASH_SOURCE[0]:-}" ] && [ "${BASH_SOURCE[0]}" != "bash" ]; then
+    SCRIPT_SOURCE_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" 2>/dev/null && pwd)"
+fi
+if [ -z "${SCRIPT_SOURCE_DIR}" ]; then
+    SCRIPT_SOURCE_DIR="$(pwd)"
+fi
 
 sudo mkdir -p "$INSTALL_DIR"
 
